@@ -1,0 +1,27 @@
+<p>productlist works!</p>
+
+<h1>Product Details</h1>
+<div>
+<table class="table table-striped">
+    <thead>
+  <tr>
+    <th>ID</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Image</th>
+  </tr>
+</thead>
+<tbody>
+<tr *ngFor="let pro of products">
+  <td>{{pro.id}}</td>
+  <td>{{pro.desc}}</td>
+  <td>{{pro.price}}</td>
+  <td>{{pro.quantity}}</td>
+  <td><img [src]="pro.img" height="100px" width="100"></td>
+  <td>
+  <button (click)="addToCart(pro.id)">Add to Cart</button></td>
+</tr>
+</tbody>
+</table>
+<hr>

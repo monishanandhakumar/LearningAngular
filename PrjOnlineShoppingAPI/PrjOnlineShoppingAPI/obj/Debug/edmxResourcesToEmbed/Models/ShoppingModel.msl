@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbOnlineDatabaseModelStoreContainer" CdmEntityContainer="dbOnlineDatabaseEntities1">
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="dbOnlineDatabaseModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="purchase_qty" ColumnName="purchase_qty" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblcustomers">
+      <EntityTypeMapping TypeName="dbOnlineDatabaseModel.tblcustomer">
+        <MappingFragment StoreEntitySet="tblcustomers">
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="cname" ColumnName="cname" />
+          <ScalarProperty Name="phno" ColumnName="phno" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOrders">
+      <EntityTypeMapping TypeName="dbOnlineDatabaseModel.tblOrder">
+        <MappingFragment StoreEntitySet="tblOrders">
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+          <ScalarProperty Name="billamount" ColumnName="billamount" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblProducts">
+      <EntityTypeMapping TypeName="dbOnlineDatabaseModel.tblProduct">
+        <MappingFragment StoreEntitySet="tblProduct">
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="productname" ColumnName="productname" />
+          <ScalarProperty Name="unitprice" ColumnName="unitprice" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

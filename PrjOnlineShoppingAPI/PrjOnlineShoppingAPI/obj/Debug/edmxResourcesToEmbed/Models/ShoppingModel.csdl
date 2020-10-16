@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbOnlineDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="orderid" />
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="orderid" Type="Int32" Nullable="false" />
+    <Property Name="productid" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="Double" />
+    <Property Name="purchase_qty" Type="Int32" />
+    <Property Name="TotalAmount" Type="Double" />
+    <NavigationProperty Name="tblOrder" Relationship="Self.FK__OrderDeta__order__4316F928" FromRole="OrderDetails" ToRole="tblOrders" />
+    <NavigationProperty Name="tblProduct" Relationship="Self.FK__OrderDeta__produ__440B1D61" FromRole="OrderDetails" ToRole="tblProduct" />
+  </EntityType>
+  <EntityType Name="tblcustomer">
+    <Key>
+      <PropertyRef Name="customerid" />
+    </Key>
+    <Property Name="customerid" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="cname" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phno" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblOrders" Relationship="Self.FK__tblOrders__custo__3D5E1FD2" FromRole="tblcustomers" ToRole="tblOrders" />
+  </EntityType>
+  <EntityType Name="tblOrder">
+    <Key>
+      <PropertyRef Name="orderid" />
+    </Key>
+    <Property Name="orderid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="orderdate" Type="DateTime" Precision="0" />
+    <Property Name="billamount" Type="Double" />
+    <Property Name="customerid" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__order__4316F928" FromRole="tblOrders" ToRole="OrderDetails" />
+    <NavigationProperty Name="tblcustomer" Relationship="Self.FK__tblOrders__custo__3D5E1FD2" FromRole="tblOrders" ToRole="tblcustomers" />
+  </EntityType>
+  <EntityType Name="tblProduct">
+    <Key>
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="productid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="unitprice" Type="Single" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__produ__440B1D61" FromRole="tblProduct" ToRole="OrderDetails" />
+  </EntityType>
+  <Association Name="FK__OrderDeta__order__4316F928">
+    <End Role="tblOrders" Type="Self.tblOrder" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOrders">
+        <PropertyRef Name="orderid" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__produ__440B1D61">
+    <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProduct">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblOrders__custo__3D5E1FD2">
+    <End Role="tblcustomers" Type="Self.tblcustomer" Multiplicity="0..1" />
+    <End Role="tblOrders" Type="Self.tblOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblcustomers">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="tblOrders">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbOnlineDatabaseEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="tblcustomers" EntityType="Self.tblcustomer" />
+    <EntitySet Name="tblOrders" EntityType="Self.tblOrder" />
+    <EntitySet Name="tblProducts" EntityType="Self.tblProduct" />
+    <AssociationSet Name="FK__OrderDeta__order__4316F928" Association="Self.FK__OrderDeta__order__4316F928">
+      <End Role="tblOrders" EntitySet="tblOrders" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__produ__440B1D61" Association="Self.FK__OrderDeta__produ__440B1D61">
+      <End Role="tblProduct" EntitySet="tblProducts" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblOrders__custo__3D5E1FD2" Association="Self.FK__tblOrders__custo__3D5E1FD2">
+      <End Role="tblcustomers" EntitySet="tblcustomers" />
+      <End Role="tblOrders" EntitySet="tblOrders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

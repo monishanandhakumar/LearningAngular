@@ -1,0 +1,51 @@
+<!--
+<div [ngSwitch]="userChoice">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+              <a> <li (click)="userChoice='product'">ProductList</li></a> 
+                
+                <a><li (click)="userChoice='cart'">Cart</li></a>
+            </ul>
+        </div>
+      </nav>
+      <div *ngSwitchCase="'product'">
+        <app-productlist></app-productlist>
+    </div>
+    <div  *ngSwitchCase="'cart'">
+        <app-cart></app-cart>
+    </div>
+</div>
+-->
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">WebSiteName</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a a routerLink="home">Home</a></li>
+        <li><a routerLink="productlist">Product</a></li>
+       <li><a routerLink="cart">Cart</a></li>
+       <div *ngIf="loginsession=='invalid';else loff">
+        <li>
+          <a routerLink="login">Login</a></li>
+         <li #loff> <a routerLink="home">logoff</a></li>
+       </div>
+        
+        
+      </ul>
+    </div>
+  </nav>
+  
+  
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+  
+
+<!--
+<app-productlist></app-productlist>
+<app-cart></app-cart>
+<hr>
+<app-reactiveformslogin></app-reactiveformslogin>-->

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbOnlineDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="OrderDetails">
+    <Key>
+      <PropertyRef Name="orderid" />
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="orderid" Type="int" Nullable="false" />
+    <Property Name="productid" Type="int" Nullable="false" />
+    <Property Name="price" Type="float" />
+    <Property Name="purchase_qty" Type="int" />
+    <Property Name="TotalAmount" Type="float" />
+  </EntityType>
+  <EntityType Name="tblcustomers">
+    <Key>
+      <PropertyRef Name="customerid" />
+    </Key>
+    <Property Name="customerid" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="cname" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="phno" Type="nvarchar" MaxLength="24" />
+    <Property Name="mail" Type="nvarchar" MaxLength="50" />
+    <Property Name="password" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tblOrders">
+    <Key>
+      <PropertyRef Name="orderid" />
+    </Key>
+    <Property Name="orderid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderdate" Type="date" />
+    <Property Name="billamount" Type="float" />
+    <Property Name="customerid" Type="nchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="tblProduct">
+    <Key>
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="productid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productname" Type="nvarchar" MaxLength="30" />
+    <Property Name="unitprice" Type="real" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="img" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK__OrderDeta__order__4316F928">
+    <End Role="tblOrders" Type="Self.tblOrders" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOrders">
+        <PropertyRef Name="orderid" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__produ__440B1D61">
+    <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProduct">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblOrders__custo__3D5E1FD2">
+    <End Role="tblcustomers" Type="Self.tblcustomers" Multiplicity="0..1" />
+    <End Role="tblOrders" Type="Self.tblOrders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblcustomers">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="tblOrders">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbOnlineDatabaseModelStoreContainer">
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblcustomers" EntityType="Self.tblcustomers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblOrders" EntityType="Self.tblOrders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__OrderDeta__order__4316F928" Association="Self.FK__OrderDeta__order__4316F928">
+      <End Role="tblOrders" EntitySet="tblOrders" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__produ__440B1D61" Association="Self.FK__OrderDeta__produ__440B1D61">
+      <End Role="tblProduct" EntitySet="tblProduct" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblOrders__custo__3D5E1FD2" Association="Self.FK__tblOrders__custo__3D5E1FD2">
+      <End Role="tblcustomers" EntitySet="tblcustomers" />
+      <End Role="tblOrders" EntitySet="tblOrders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,30 @@
+<p>reactiveformslogin works!</p>
+<div class="jumbotron">
+    <form [formGroup]="loginForm" (ngSubmit)="doLogin()">
+    <div > 
+     <label>Email</label>
+     <input type="text" formControlName="email"> 
+     <span class="alert alert-danger" *ngIf="email.errors && email.touched">
+
+        <span *ngIf="email.errors.required">  Username cannot be empty!!!</span>
+         
+        
+     </span>
+    </div>
+     <div>
+         <label>Password</label>
+         <input type="password" formControlName="password">
+ 
+     </div>
+
+     <button class="btn btn-success" [disabled]="loginForm.invalid">Login</button>
+     <button class="btn btn-danger" type="reset" >Reset</button>
+   <!-- <button class="btn btn-primary"  (click)="doLogin()">Login</button>--> 
+    </form>
+
+</div>
+
+<div >
+{{err}}
+
+</div>
