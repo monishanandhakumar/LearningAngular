@@ -1,0 +1,45 @@
+<p>productclient works!</p>
+<!--Adding Product /Create Product-->
+<div class="jumbotron">
+<form  #productform="ngForm">
+  ProductId: <input type="number" name="id" [(ngModel)]="createProduct.id"  ><br/><br/>
+ProductName:<input type="text" name="desc" [(ngModel)]="createProduct.desc" > <br/> <br/>
+ProductPrice:<input type="text" name="price" [(ngModel)]="createProduct.price" > <br/> <br/>
+ProductAdditionalInfo:<input type="text" name="additionalinfo" [(ngModel)]="createProduct.additionalinfo"> <br/> <br/>
+ProductImage:<input type="text"  name="img"[(ngModel)]="createProduct.img"> <br/> <br/>
+<button type="button btn-primary" (click)="addProducts()">Add New Product</button>&nbsp;&nbsp;
+<button type="button btn-primary" (click)="updateProducts(productform)">update Product</button>
+</form>
+</div>  
+{{message}}
+
+<hr/>
+<h1>Product Details</h1>
+<div>
+<table class="table table-striped">
+    <thead>
+  <tr>
+    <th>ID</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Image</th>
+  </tr>
+</thead>
+<tbody>
+<tr *ngFor="let pro of products">
+  <td>{{pro.id}}</td>
+  <td>{{pro.desc}}</td>
+  <td>{{pro.price}}</td>
+  <td><img [src]="pro.img" height="100px" width="100"></td>
+  
+  <td><a [routerLink]="['/productinfo/',pro.id]">See Additional Info here!!!</a></td>
+  <td><button type="button" (click)="deleteProducts(pro.id)">Delete</button></td>
+  <!--<td><button type="button btn-primary" (click)="editProducts(pro.id)">Edit Product</button></td>-->
+  <td><button><a [routerLink]="['/editproduct/',pro.id]">Edit Product</a></button></td>
+  <td><button><a [routerLink]="['/cart/',pro.id]">Add To Cart</a></button></td>
+ 
+</tr>
+</tbody>
+</table>
+</div>
+<button type="button" (click)="getProducts()">Show Product</button>

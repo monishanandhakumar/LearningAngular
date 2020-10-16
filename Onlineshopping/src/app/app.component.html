@@ -1,0 +1,120 @@
+
+<!--Routing -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Online Shopping</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a routerLink='learning'>Learning</a></li>
+      <li><a routerLink='productclient'>ProductClient</a></li>
+      <li><a routerLink='productlist'>ProductList</a></li>
+      <li><a routerLink='register'>Register</a></li>
+      <li><a routerLink='cart'>cart</a></li>
+    <!--<li><a routerLink='result'>Result</a></li>-->  
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid" >
+  <div >
+      <router-outlet></router-outlet>
+  </div>
+ 
+</div>
+<!--<h2>
+Id: {{id}}
+desc:{{desc}}
+price:{{price}}
+<img [src]="img" height="100px" width="100"></h2>
+-->
+
+<!--
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Image</th>
+  </tr>
+<tr *ngFor="let pro of products">
+  <td>{{pro.id}}</td>
+  <td>{{pro.desc}}</td>
+  <td>{{pro.price}}</td>
+  <td><img [src]="pro.img" height="100px" width="100"></td>
+</tr>
+</table>
+<hr/>
+<h2>NgFor && NgIf</h2>
+<div *ngFor="let pro of products">
+ 
+  <div *ngIf="pro.price>100 ">
+    <li>{{pro.id}}  {{pro.desc}}</li></div>
+  </div>
+  <hr> 
+
+  <div>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Image</th>
+      </tr>
+    <tr *ngFor="let pro of products">
+     
+      <div *ngIf="pro.price>100 ">
+      <td>{{pro.id}}</td>
+      <td>{{pro.desc}}</td>
+      <td>{{pro.price}}</td>
+      <td><img [src]="pro.img" height="100px" width="100"></td>
+   
+  </div>
+    </tr>
+    </table>
+
+
+  </div>
+
+  <hr/>
+  <ul *ngFor="let pro of products">
+    <li *ngIf="pro.price>=10 && pro.price<=20" class="text-success">
+      {{ pro.id }} {{pro.desc}} {{pro.price}}
+    </li>
+    <li *ngIf="pro.price>=100 && pro.price<=150" class="text-danger">
+      {{ pro.id }} {{pro.desc}} {{pro.price}}
+    </li>
+  </ul>
+
+  <hr/>
+  <h2>NgSwitch</h2>
+  <p>can't use condition in switch</p>
+  <ul *ngFor="let pro of products"
+    [ngSwitch]="pro.price"> 
+
+  <li *ngSwitchCase =100 class="text-success">
+    {{ pro.id }} ({{ pro.desc }})
+  </li>
+  
+  <li *ngSwitchCase =200 class="text-danger">
+    {{ pro.id }} ({{ pro.desc }})
+  </li>
+  
+</ul>`
+-->
+<!--
+  <app-productlist></app-productlist>
+<hr>
+-->
+<!--
+<app-learning></app-learning>
+<hr>
+
+
+  <app-register></app-register>
+-->
+ <!--
+
+  <hr>
+  <app-productclient></app-productclient>
+ --> 
+

@@ -1,0 +1,14 @@
+<p>editproduct works!</p>
+<div class="jumbotron">
+    <form  #productform="ngForm">
+      ProductId: <input hidden type="number" name="id" [(ngModel)]="editProductform.id"  ><br/><br/>
+    ProductName:<input type="text" name="desc" [(ngModel)]="editProductform.desc" > <br/> <br/>
+    ProductPrice:<input type="text" name="price" [(ngModel)]="editProductform.price" > <br/> <br/>
+    ProductAdditionalInfo:<input type="text" name="additionalinfo" [(ngModel)]="editProductform.additionalinfo"> <br/> <br/>
+    ProductImage:<input type="text"  name="img"[(ngModel)]="editProductform.img"> <br/> <br/>
+ 
+ <!--  <button type="button btn-primary" (click)="updateProducts(productform)">update Product</button>--> 
+    </form>
+    </div>  
+
+    {{message}}

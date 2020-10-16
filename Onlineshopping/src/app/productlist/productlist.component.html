@@ -1,0 +1,19 @@
+<p>productlist works!</p>
+<table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Image</th>
+    </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let pro of products">
+    <td>{{pro.id}}</td>
+    <td>{{pro.desc}}</td>
+    <td>{{pro.price}}</td>
+    <td><img [src]="pro.img" height="100px" width="100"></td>
+  </tr>
+</tbody>
+  </table>

@@ -1,0 +1,66 @@
+<p>register works!</p>
+<div >
+<form >
+
+    <p>
+    <label for="cid">ID</label>
+    <input type="number" name="id"  required [(ngModel)]=customers.cid  #id="ngModel" >
+    </p>
+  
+
+      <div *ngIf="!id?.valid && (id?.dirty || id?.touched)" class="error">
+          <div *ngIf="id.errors.required">
+              <small class="text-danger">Customer Id is Required</small>
+          </div>
+      </div>
+
+      
+    
+<br>
+<p>
+    <label for="name">NAME</label>
+
+    <input type="text" name="cname" required minlength="5"  [(ngModel)]="customers.cname" #cname="ngModel">
+</p>
+<div *ngIf="!cname?.valid && (cname?.dirty || cname?.touched)" class="error">
+    <div *ngIf="cname.errors.required">
+        <small class="text-danger">Customer Id is Required</small>
+    </div>
+    <div *ngIf="cname.errors.minlength">
+      <small class="text-danger">  Customer Name should of minimum length {{cname.errors.minlength?.requiredLength}}</small>
+       </div>
+</div>
+<br>
+<p>
+    <label for="age">AGE</label>
+    <input type="number" name="age" #age="ngModel" [(ngModel)]="customers.age" required min=1 max=100>
+</p>
+   
+    
+    <div *ngIf="!age?.valid && (age?.dirty || age?.touched)" class="error">
+        <div *ngIf="age.errors.required">
+            <small class="text-danger">Customer Id is Required</small>
+        </div>
+        <div *ngIf="age.errors.min && age.errors.max">
+          <small class="text-danger">  Customer Name age should be between 1 to 100 </small>
+           </div>
+    </div>
+
+<br>
+<p>
+    <label for="email">email </label>
+    <input type="text"  name="email" required email #email="ngModel" [(ngModel)]="customers.email">
+  </p>
+  <div *ngIf="!email?.valid && (email?.dirty || email?.touched)" class="error">
+    <div *ngIf="email.errors.required">
+    <small class="text-danger">Email is required</small>  
+    </div>
+    <div *ngIf="email.errors.email">
+     <small class="text-danger">Invalid Email Address</small> 
+    </div>
+  </div>
+
+    <br>
+   <!--   <button type="submit" [disabled]="!customerForm.valid">Submit</button>--> 
+</form>
+</div>
